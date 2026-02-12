@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Teste de Perfil Comportamental (Liderança) • Evolua+ Profissões</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.09);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --muted2: rgba(255,255,255,.55);
+      --border: rgba(255,255,255,.12);
+      --accent: #4fd1c5;
+      --accent2:#7c3aed;
+      --danger:#ef4444;
+      --ok:#22c55e;
+      --shadow: 0 18px 50px rgba(0,0,0,.45);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      background:
+        radial-gradient(900px 500px at 20% 10%, rgba(124,58,237,.25), transparent 60%),
+        radial-gradient(700px 450px at 85% 20%, rgba(79,209,197,.22), transparent 60%),
+        radial-gradient(800px 600px at 50% 100%, rgba(2,132,199,.18), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      min-height:100vh;
+    }
+    a{color:inherit}
+    .wrap{max-width: 980px; margin: 0 auto; padding: 26px 16px 60px;}
+    header{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:14px;
+      padding: 18px 18px; border:1px solid var(--border); border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+    }
+    .brand h1{margin:0; font-size: 20px; letter-spacing:.2px}
+    .brand p{margin:6px 0 0; color: var(--muted); font-size: 13px; line-height:1.45}
+    .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      padding: 9px 12px; border-radius: 999px;
+      border:1px solid var(--border); background: rgba(255,255,255,.05);
+      color: var(--muted); font-size: 12px; white-space: nowrap;
+    }
+    .grid{display:grid; grid-template-columns: 1fr; gap: 12px; margin-top: 14px;}
+    .card{
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.05);
+      box-shadow: 0 10px 30px rgba(0,0,0,.28);
+      overflow:hidden;
+    }
+    .qhead{
+      padding: 14px 16px; background: rgba(255,255,255,.03);
+      border-bottom:1px solid var(--border);
+      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
+    }
+    .qtitle{font-weight: 650; font-size: 14px; line-height:1.35}
+    .qnum{color: var(--muted2); font-weight: 700; font-size: 12px}
+    .opts{padding: 12px 10px 12px 10px; display:grid; gap: 8px;}
+    .opt{
+      display:flex; gap:10px; align-items:flex-start;
+      padding: 10px 10px; border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      cursor:pointer;
+      transition: transform .05s ease, background .15s ease, border-color .15s ease;
+    }
+    .opt:hover{background: rgba(255,255,255,.055); border-color: rgba(255,255,255,.16);}
+    .opt:active{transform: translateY(1px);}
+    input[type="radio"]{transform: translateY(2px);}
+    .tag{
+      font-weight:800; font-size: 12px;
+      padding: 4px 8px; border-radius: 10px;
+      border:1px solid rgba(255,255,255,.16);
+      background: linear-gradient(135deg, rgba(79,209,197,.18), rgba(124,58,237,.18));
+      min-width: 34px; text-align:center;
+    }
+    .otxt{color:var(--text); font-size: 13px; line-height:1.35}
+    .muted{color:var(--muted2)}
+    .controls{
+      margin-top: 14px;
+      display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between;
+      padding: 14px 16px; border:1px solid var(--border); border-radius: var(--radius);
+      background: rgba(255,255,255,.045);
+    }
+    .btn{
+      appearance:none; border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      padding: 10px 12px; border-radius: 14px;
+      font-weight: 700; font-size: 13px;
+      cursor:pointer;
+      transition: transform .05s ease, background .15s ease, border-color .15s ease;
+    }
+    .btn:hover{background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.24);}
+    .btn:active{transform: translateY(1px);}
+    .btn.primary{
+      border-color: rgba(79,209,197,.5);
+      background: linear-gradient(135deg, rgba(79,209,197,.25), rgba(124,58,237,.18));
+    }
+    .btn.danger{
+      border-color: rgba(239,68,68,.5);
+      background: rgba(239,68,68,.10);
+    }
+    .status{font-size: 13px; color: var(--muted);}
+    .status strong{color: var(--text);}
+    .results{
+      margin-top: 14px;
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.05);
+      overflow:hidden;
+    }
+    .rhead{padding: 14px 16px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; gap:12px;}
+    .rhead h2{margin:0; font-size: 16px}
+    .note{margin:0; font-size: 12px; color: var(--muted2);}
+    .rbody{padding: 14px 16px 16px; display:grid; gap: 10px;}
+    .row{display:grid; grid-template-columns: 54px 1fr 64px; gap: 10px; align-items:center;}
+    .bar{height: 12px; border-radius: 999px; background: rgba(255,255,255,.10); overflow:hidden; border:1px solid rgba(255,255,255,.10);}
+    .fill{height:100%; width:0%; background: linear-gradient(90deg, rgba(79,209,197,.9), rgba(124,58,237,.9));}
+    .k{font-weight: 900; letter-spacing:.4px}
+    .pct{text-align:right; font-weight: 800}
+    .msg{
+      margin-top: 12px; padding: 12px 14px; border-radius: 14px;
+      border:1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.04);
+      color: var(--muted);
+      line-height:1.45; font-size: 13px;
+    }
+    .msg.ok{border-color: rgba(34,197,94,.55); background: rgba(34,197,94,.10); color: rgba(220,252,231,.92);}
+    .msg.err{border-color: rgba(239,68,68,.55); background: rgba(239,68,68,.10); color: rgba(254,226,226,.92);}
+    footer{margin-top: 18px; color: var(--muted2); font-size: 12px; line-height:1.5;}
+    @media (min-width: 860px){
+      .grid{grid-template-columns: 1fr 1fr;}
+    }
+  
+    .logoBox{display:flex; align-items:center; gap:12px;}
+    .logoBox img{width:72px; height:72px; border-radius:16px; object-fit:cover; border:1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.04);}
+    header{align-items:center;}
+    .brand{flex:1;}
+
+  
+    .pcards{display:grid; gap:10px;}
+    .pgrid{display:grid; gap:10px;}
+    .pCard{
+      padding: 14px 14px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.14);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: 0 10px 30px rgba(0,0,0,.22);
+      display:flex; gap:12px; align-items:flex-start;
+    }
+    .pIcon{
+      width:44px; height:44px; border-radius:14px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.05);
+      display:flex; align-items:center; justify-content:center;
+      font-size: 22px;
+      flex:0 0 auto;
+    }
+    .pMeta{flex:1; min-width:0;}
+    .pMeta h3{margin:0; font-size: 14px;}
+    .pMeta p{margin:6px 0 0; font-size: 12px; color: var(--muted); line-height:1.45;}
+    .pBadges{display:flex; flex-wrap:wrap; gap:8px; margin-top: 8px;}
+    .badge{
+      display:inline-flex; align-items:center; gap:6px;
+      padding: 6px 10px; border-radius: 999px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.05);
+      font-size: 12px; color: var(--text);
+      font-weight: 700;
+    }
+    .badge strong{letter-spacing:.3px;}
+    .badge.ok{border-color: rgba(34,197,94,.55); background: rgba(34,197,94,.10); color: rgba(220,252,231,.92);}
+    .badge.alt{border-color: rgba(124,58,237,.55); background: rgba(124,58,237,.12);}
+    .hint{
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--muted2);
+    }
+    .missingMark{
+      border-color: rgba(239,68,68,.55) !important;
+      background: rgba(239,68,68,.08) !important;
+    }
+
+
+    .bottomBar{
+      margin-top: 16px;
+      position: sticky;
+      bottom: 10px;
+      z-index: 20;
+    }
+    .bottomInner{
+      border:1px solid var(--border);
+      border-radius: calc(var(--radius) + 6px);
+      background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      padding: 12px 14px;
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      backdrop-filter: blur(10px);
+    }
+    .bottomBtns{display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
+    .bottomInner .status{color: var(--muted); font-size: 13px;}
+    @media (prefers-reduced-motion: reduce){
+      *{scroll-behavior:auto !important}
+    }
+
+  
+    .nameRow{
+      display:flex; gap:12px; align-items:center; flex-wrap:wrap;
+      padding:10px 12px;
+      border:1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(255,255,255,.04);
+    }
+    .nameRow label{ font-size: 13px; color: var(--muted); }
+    .nameRow input{
+      flex: 1 1 260px;
+      min-width: 220px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.20);
+      color: var(--text);
+      outline: none;
+    }
+    .nameRow input:focus{
+      border-color: rgba(79,209,197,.65);
+      box-shadow: 0 0 0 4px rgba(79,209,197,.12);
+    }
+    .btn[disabled]{ opacity:.55; cursor:not-allowed; filter: grayscale(.2); }
+
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logoBox">
+        <img src="assets/logo-evolua.png" alt="Evolua+ Profissões"/>
+      </div>
+      <div class="brand">
+        <h1>Teste de Perfil Comportamental (Liderança) • <span class="muted">By Evolua+ Profissões</span></h1>
+        <p>
+          Marque <strong>apenas 1 alternativa</strong> em cada pergunta (I, C, O ou A).<br/>
+          No final, o sistema conta quantas respostas de cada letra você marcou e calcula as porcentagens.
+        </p>
+      </div>
+      <div class="pill" id="progressPill">0/25 respondidas</div>
+    </header>
+
+    <div class="controls">
+      <div class="status" id="statusText">
+        Responda as perguntas e clique em <strong>Calcular Resultado</strong>.
+      </div>
+      <div class="nameRow" style="margin-top:10px;">
+        <label for="userName"><strong>Seu nome:</strong></label>
+        <input id="userName" type="text" placeholder="Digite seu nome para aparecer no resultado e no PDF (opcional)"/>
+      </div>
+
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+<button class="btn" id="btnScroll" type="button">Ir para o Resultado</button>
+        <button class="btn danger" id="btnReset" type="button">Limpar Respostas</button>
+      </div>
+    </div>
+
+    <main class="grid" id="questions"></main>
+
+    <div class="bottomBar" id="bottomBar">
+      <div class="bottomInner">
+        <div class="status" id="bottomStatus">Quando terminar, clique em <strong>Calcular Resultado</strong>.</div>
+        <div class="bottomBtns">
+          <button class="btn primary" id="btnCalc" type="button">Calcular Resultado</button>
+          <button class="btn" id="btnScrollTop" type="button">Voltar ao topo</button>
+          <button class="btn danger" id="btnReset2" type="button">Limpar</button>
+        </div>
+      </div>
+    </div>
+
+
+    <section class="results" id="resultsBox" aria-live="polite">
+      <div class="rhead">
+        <div>
+          <h2>Resultado</h2>
+          <p class="note">Ordenado da maior porcentagem para a menor. (25 respostas = 100% • cada resposta vale 4%).</p>
+        </div>
+        <div style="display:flex; gap:10px; align-items:center; justify-content:flex-end; flex-wrap:wrap;">
+          <button class="btn primary" id="btnPdf" type="button" disabled>Baixar PDF do Resultado</button>
+          <div class="pill" id="sumPill">Soma: 0%</div>
+        </div>
+      </div>
+      <div class="rbody" id="profileCards"></div>
+      <div class="rbody" id="resultRows"></div>
+      <div class="msg" id="msgBox">Preencha o teste para ver seu resultado aqui.</div>
+    </section>
+
+    <footer>
+      Baseado na atividade “Avaliação de Perfil de Liderança” do PDF fornecido.
+      Este site é apenas para uso educacional interno da Evolua+ Profissões.
+    </footer>
+  </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+  const DATA = [{"n": 1, "q": "Eu sou...", "opts": [{"k": "I", "t": "Idealista, criativo e visionário"}, {"k": "C", "t": "Divertido, espiritual e benéfico"}, {"k": "O", "t": "Confiável, meticuloso e previsível"}, {"k": "A", "t": "Focado, determinado e persistente"}]}, {"n": 2, "q": "Eu gosto de...", "opts": [{"k": "A", "t": "Ser piloto"}, {"k": "C", "t": "Conversar com os passageiros"}, {"k": "O", "t": "Planejar a viagem"}, {"k": "I", "t": "Explorar novas rotas"}]}, {"n": 3, "q": "Se você quiser se dar bem comigo...", "opts": [{"k": "I", "t": "Me dê liberdade"}, {"k": "O", "t": "Me deixe saber sua expectativa"}, {"k": "A", "t": "Lidere, siga ou saia do caminho"}, {"k": "C", "t": "Seja amigável, carinhoso e compreensivo"}]}, {"n": 4, "q": "Para conseguir obter bons resultados é preciso...", "opts": [{"k": "I", "t": "Ter incertezas"}, {"k": "O", "t": "Controlar o essencial"}, {"k": "C", "t": "Diversão e celebração"}, {"k": "A", "t": "Planejar e obter recursos"}]}, {"n": 5, "q": "Eu me divirto quando...", "opts": [{"k": "A", "t": "Estou me exercitando"}, {"k": "I", "t": "Tenho novidades"}, {"k": "C", "t": "Estou com os outros"}, {"k": "O", "t": "Determino as regras"}]}, {"n": 6, "q": "Eu penso que...", "opts": [{"k": "C", "t": "Unidos venceremos, divididos perderemos"}, {"k": "A", "t": "O ataque é melhor que a defesa"}, {"k": "I", "t": "É bom ser manso, mas andar com um porrete"}, {"k": "O", "t": "Um homem prevenido vale por dois"}]}, {"n": 7, "q": "Minha preocupação é...", "opts": [{"k": "I", "t": "Gerar a ideia global"}, {"k": "C", "t": "Fazer com que as pessoas gostem"}, {"k": "O", "t": "Fazer com que funcione"}, {"k": "A", "t": "Fazer com que aconteça"}]}, {"n": 8, "q": "Eu prefiro...", "opts": [{"k": "I", "t": "Perguntas a respostas"}, {"k": "O", "t": "Ter todos os detalhes"}, {"k": "A", "t": "Vantagens a meu favor"}, {"k": "C", "t": "Que todos tenham a chance de ser ouvido"}]}, {"n": 9, "q": "Eu gosto de...", "opts": [{"k": "A", "t": "Fazer progresso"}, {"k": "C", "t": "Construir memórias"}, {"k": "O", "t": "Fazer sentido"}, {"k": "I", "t": "Tornar as pessoas confortáveis"}]}, {"n": 10, "q": "Eu gosto de chegar...", "opts": [{"k": "A", "t": "Na frente"}, {"k": "C", "t": "Junto"}, {"k": "O", "t": "Na hora"}, {"k": "I", "t": "Em outro lugar"}]}, {"n": 11, "q": "Um ótimo dia para mim é quando...", "opts": [{"k": "A", "t": "Consigo fazer muitas coisas"}, {"k": "C", "t": "Me divirto com meus amigos"}, {"k": "O", "t": "Tudo segue conforme planejado"}, {"k": "I", "t": "Desfruto de coisas novas e estimulantes"}]}, {"n": 12, "q": "Eu vejo a morte como...", "opts": [{"k": "I", "t": "Uma grande aventura misteriosa"}, {"k": "C", "t": "Oportunidade para rever os falecidos"}, {"k": "O", "t": "Um modo de receber recompensas"}, {"k": "A", "t": "Algo que sempre chega muito cedo"}]}, {"n": 13, "q": "Minha filosofia de vida é...", "opts": [{"k": "A", "t": "Há ganhadores e perdedores, e eu acredito ser um ganhador"}, {"k": "C", "t": "Para eu ganhar, ninguém precisa perder"}, {"k": "O", "t": "Para ganhar é preciso seguir as regras"}, {"k": "I", "t": "Para ganhar, é necessário inventar novas regras"}]}, {"n": 14, "q": "Eu sempre gostei de...", "opts": [{"k": "I", "t": "Explorar"}, {"k": "O", "t": "Evitar surpresas"}, {"k": "A", "t": "Focalizar a meta"}, {"k": "C", "t": "Realizar uma abordagem natural"}]}, {"n": 15, "q": "Eu gosto de mudanças se...", "opts": [{"k": "A", "t": "Me der uma vantagem competitiva"}, {"k": "C", "t": "For divertido e puder ser compartilhado"}, {"k": "I", "t": "Me der mais liberdade e variedade"}, {"k": "O", "t": "Melhorar ou me der mais controle"}]}, {"n": 16, "q": "Não existe nada de errado em...", "opts": [{"k": "A", "t": "Se colocar na frente"}, {"k": "C", "t": "Colocar os outros na frente"}, {"k": "I", "t": "Mudar de ideia"}, {"k": "O", "t": "Ser consistente"}]}, {"n": 17, "q": "Eu gosto de buscar conselhos de...", "opts": [{"k": "A", "t": "Pessoas bem-sucedidas"}, {"k": "C", "t": "Anciões e conselheiros"}, {"k": "O", "t": "Autoridades no assunto"}, {"k": "I", "t": "Lugares, os mais estranhos"}]}, {"n": 18, "q": "Meu lema é...", "opts": [{"k": "I", "t": "Fazer o que precisa ser feito"}, {"k": "O", "t": "Fazer bem feito"}, {"k": "C", "t": "Fazer junto com o grupo"}, {"k": "A", "t": "Simplesmente fazer"}]}, {"n": 19, "q": "Eu gosto de...", "opts": [{"k": "I", "t": "Complexidade, mesmo se confuso"}, {"k": "O", "t": "Ordem e sistematização"}, {"k": "C", "t": "Calor humano e animação"}, {"k": "A", "t": "Coisas claras e simples"}]}, {"n": 20, "q": "Tempo para mim é...", "opts": [{"k": "A", "t": "Algo que detesto desperdiçar"}, {"k": "C", "t": "Um grande ciclo"}, {"k": "O", "t": "Uma flecha que leva ao inevitável"}, {"k": "I", "t": "Irrelevante"}]}, {"n": 21, "q": "Se eu fosse bilionário...", "opts": [{"k": "C", "t": "Faria doações para muitas entidades"}, {"k": "O", "t": "Criaria uma poupança avantajada"}, {"k": "I", "t": "Faria o que desse na cabeça"}, {"k": "A", "t": "Exibiria bastante com algumas pessoas"}]}, {"n": 22, "q": "Eu acredito que...", "opts": [{"k": "A", "t": "O destino é mais importante que a jornada"}, {"k": "C", "t": "A jornada é mais importante que o destino"}, {"k": "O", "t": "Um centavo economizado é um centavo ganho"}, {"k": "I", "t": "Bastam um navio e uma estrela para navegar"}]}, {"n": 23, "q": "Eu acredito também que...", "opts": [{"k": "A", "t": "Aquele que hesita está perdido"}, {"k": "O", "t": "De grão em grão a galinha enche o papo"}, {"k": "C", "t": "O que vai, volta"}, {"k": "I", "t": "Um sorriso ou uma careta é o mesmo para quem é cego"}]}, {"n": 24, "q": "Eu acredito ainda que...", "opts": [{"k": "O", "t": "É melhor prudência do que arrependimento"}, {"k": "I", "t": "A autoridade deve ser desafiada"}, {"k": "A", "t": "Ganhar é fundamental"}, {"k": "C", "t": "O coletivo é mais importante do que o individual"}]}, {"n": 25, "q": "Eu penso que...", "opts": [{"k": "I", "t": "Não é fácil ficar encurralado"}, {"k": "O", "t": "É preferível olhar, antes de pular"}, {"k": "C", "t": "Duas cabeças pensam melhor do que uma"}, {"k": "A", "t": "Se você não tem condições de competir, não compita"}]}];
+
+  const elQ = document.getElementById('questions');
+  const elCards = document.getElementById('profileCards');
+  const elRows = document.getElementById('resultRows');
+  const elMsg = document.getElementById('msgBox');
+  const elSum = document.getElementById('sumPill');
+  const elProg = document.getElementById('progressPill');
+  const elStatus = document.getElementById('statusText');
+  const elBottomStatus = document.getElementById('bottomStatus');
+
+
+  const elName = document.getElementById('userName');
+  const elBtnPdf = document.getElementById('btnPdf');
+
+  // Persistir nome (opcional)
+  try {
+    const savedName = localStorage.getItem('evolua_user_name') || '';
+    if (elName) elName.value = savedName;
+    elName?.addEventListener('input', () => {
+      localStorage.setItem('evolua_user_name', elName.value.trim());
+    });
+  } catch(e){}
+
+  // Guarda último resultado calculado para exportação
+  let LAST_RESULT = null;
+
+  async function loadImageAsDataURL(url){
+    try{
+      const res = await fetch(url);
+      const blob = await res.blob();
+      return await new Promise((resolve,reject)=>{
+        const r = new FileReader();
+        r.onload = () => resolve(r.result);
+        r.onerror = reject;
+        r.readAsDataURL(blob);
+      });
+    } catch(e){
+      return null;
+    }
+  }
+
+  async function downloadPDF(){
+    if (!LAST_RESULT) return;
+    const { jsPDF } = window.jspdf || {};
+    if (!jsPDF){
+      alert('Falha ao carregar a biblioteca de PDF. Verifique sua conexão com a internet e tente novamente.');
+      return;
+    }
+
+    const doc = new jsPDF({unit:'mm', format:'a4'});
+    const margin = 14;
+    const pageW = doc.internal.pageSize.getWidth();
+    const pageH = doc.internal.pageSize.getHeight();
+    let y = 18;
+
+    const logoData = await loadImageAsDataURL('assets/logo-evolua.png');
+    if (logoData){
+      try{ doc.addImage(logoData, 'PNG', margin, 10, 32, 18); } catch(e){}
+    }
+
+    doc.setFont('helvetica','bold');
+    doc.setFontSize(14);
+    doc.text('Resultado do Teste de Perfil Comportamental (Liderança)', margin + (logoData? 38:0), 16);
+
+    doc.setFont('helvetica','normal');
+    doc.setFontSize(10);
+    const now = new Date();
+    const dateStr = now.toLocaleString('pt-BR');
+    const nameStr = LAST_RESULT.name ? `Nome: ${LAST_RESULT.name}` : 'Nome: (não informado)';
+    doc.text([nameStr, `Data/Hora: ${dateStr}`], margin, 34);
+
+    y = 42;
+
+    const top1 = LAST_RESULT.top1;
+    const top2 = LAST_RESULT.top2;
+    const p1 = PROFILE_MAP[top1.k];
+    const p2 = PROFILE_MAP[top2.k];
+
+    doc.setFont('helvetica','bold'); doc.setFontSize(12);
+    doc.text(`Perfil predominante: ${p1.animal} (${top1.k}) — ${top1.pct}%`, margin, y); y += 7;
+    doc.setFont('helvetica','normal'); doc.setFontSize(10);
+    y = addParagraph(doc, `${p1.slogan} — ${p1.summary}`, margin, y, pageW - margin*2, pageH);
+
+    y += 2;
+    doc.setFont('helvetica','bold'); doc.setFontSize(11);
+    doc.text('Pontos fortes:', margin, y); y += 5;
+    doc.setFont('helvetica','normal'); doc.setFontSize(10);
+    y = addBullets(doc, p1.strengths, margin, y, pageW - margin*2, pageH);
+
+    y += 1;
+    doc.setFont('helvetica','bold'); doc.setFontSize(11);
+    doc.text('Pontos de melhoria:', margin, y); y += 5;
+    doc.setFont('helvetica','normal'); doc.setFontSize(10);
+    y = addBullets(doc, p1.improvements, margin, y, pageW - margin*2, pageH);
+
+    y += 1;
+    doc.setFont('helvetica','bold'); doc.setFontSize(11);
+    doc.text('Áreas indicadas:', margin, y); y += 5;
+    doc.setFont('helvetica','normal'); doc.setFontSize(10);
+    y = addBullets(doc, p1.areas, margin, y, pageW - margin*2, pageH);
+
+    y += 6;
+    doc.setFont('helvetica','bold'); doc.setFontSize(12);
+    doc.text(`Perfil ascendente: ${p2.animal} (${top2.k}) — ${top2.pct}%`, margin, y); y += 7;
+    doc.setFont('helvetica','normal'); doc.setFontSize(10);
+    y = addParagraph(doc, `${p2.slogan} — ${p2.summary}`, margin, y, pageW - margin*2, pageH);
+
+    y += 3;
+    doc.setFont('helvetica','bold'); doc.setFontSize(11);
+    doc.text('Resumo de pontuação:', margin, y); y += 5;
+    doc.setFont('helvetica','normal'); doc.setFontSize(10);
+    doc.text(`I: ${LAST_RESULT.counts.I} (${LAST_RESULT.counts.I*4}%)   C: ${LAST_RESULT.counts.C} (${LAST_RESULT.counts.C*4}%)   O: ${LAST_RESULT.counts.O} (${LAST_RESULT.counts.O*4}%)   A: ${LAST_RESULT.counts.A} (${LAST_RESULT.counts.A*4}%)`, margin, y);
+    y += 8;
+
+    doc.setFont('helvetica','bold'); doc.setFontSize(12);
+    doc.text('Respostas do usuário', margin, y); y += 6;
+    doc.setFont('helvetica','normal'); doc.setFontSize(10);
+
+    for (const item of DATA){
+      const picked = LAST_RESULT.answers[item.n-1];
+      const opt = item.opts.find(o=>o.k===picked);
+      const line = `${item.n}. ${item.q}  ->  ${picked} - ${opt? opt.t : ''}`;
+      y = addParagraph(doc, line, margin, y, pageW - margin*2, pageH);
+      y += 1;
+    }
+
+    y += 6;
+    doc.setFontSize(9);
+    doc.text('* Resultado orientativo para autoconhecimento e direcionamento interno.', margin, Math.min(y, pageH - 10));
+
+    const safeName = (LAST_RESULT.name || 'usuario').replace(/[^a-zA-Z0-9-_ ]/g,'').trim().replace(/\s+/g,'_').slice(0,40);
+    doc.save(`resultado_teste_${safeName}.pdf`);
+  }
+
+  function addParagraph(doc, text, x, y, width, pageH){
+    const lines = doc.splitTextToSize(text, width);
+    for (const ln of lines){
+      if (y > pageH - 14){ doc.addPage(); y = 16; }
+      doc.text(ln, x, y);
+      y += 5;
+    }
+    return y;
+  }
+  function addBullets(doc, items, x, y, width, pageH){
+    for (const it of items){
+      y = addParagraph(doc, `• ${it}`, x, y, width, pageH);
+    }
+    return y;
+  }
+
+  elBtnPdf?.addEventListener('click', () => { downloadPDF(); });
+
+  function escapeHtml(s){
+    return (s ?? '').toString()
+      .replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;')
+      .replaceAll('"','&quot;').replaceAll("'","&#39;");
+  }
+
+  
+  const PROFILE_MAP = {
+    I: {
+      animal: 'Águia',
+      slogan: 'Fazer diferente',
+      icon: '🦅',
+      summary: 'Criativo(a), intuitivo(a) e visionário(a). Gosta de inovação e de olhar para o futuro.',
+      strengths: ['Criatividade', 'Visão de futuro', 'Inovação', 'Flexibilidade'],
+      improvements: ['Atenção ao aqui e agora', 'Disciplina para execução', 'Paciência com rotinas'],
+      areas: ['Criação / Design', 'Inovação & Produto', 'Estratégia', 'Marketing', 'Empreendedorismo']
+    },
+    C: {
+      animal: 'Gato',
+      slogan: 'Fazer junto',
+      icon: '🐱',
+      summary: 'Sensível, comunicativo(a) e orientado(a) a pessoas. Busca harmonia e trabalho em equipe.',
+      strengths: ['Relacionamento', 'Empatia', 'Comunicação', 'Clima de equipe'],
+      improvements: ['Enfrentar conflitos com clareza', 'Manter foco em resultados', 'Dizer “não” quando necessário'],
+      areas: ['RH / Pessoas', 'Atendimento', 'Vendas consultivas', 'Suporte', 'Treinamento']
+    },
+    O: {
+      animal: 'Lobo',
+      slogan: 'Fazer certo',
+      icon: '🐺',
+      summary: 'Detalhista, organizado(a) e previsível. Valoriza regras, qualidade e consistência.',
+      strengths: ['Organização', 'Qualidade', 'Planejamento', 'Confiabilidade'],
+      improvements: ['Flexibilidade com mudanças', 'Menos perfeccionismo', 'Agilidade na decisão'],
+      areas: ['Financeiro', 'Processos', 'Qualidade', 'TI / Dados', 'Operações']
+    },
+    A: {
+      animal: 'Tubarão',
+      slogan: 'Fazer rápido',
+      icon: '🦈',
+      summary: 'Focado(a) em ação e resultados. Gosta de desafios, velocidade e autonomia.',
+      strengths: ['Execução', 'Coragem', 'Objetividade', 'Competitividade saudável'],
+      improvements: ['Escuta ativa', 'Delegar mais', 'Equilibrar urgência com qualidade'],
+      areas: ['Vendas', 'Gestão comercial', 'Liderança', 'Negócios', 'Operações de alta pressão']
+    }
+  };
+
+  function pillProfile(letter){
+    const p = PROFILE_MAP[letter];
+    return `${p.animal} (${letter})`;
+  }
+
+  function renderProfileCard(letter, pct, rankLabel){
+    const p = PROFILE_MAP[letter];
+    const strengths = p.strengths.slice(0,4).map(s=>`<span class="badge">${escapeHtml(s)}</span>`).join('');
+    const improvements = p.improvements.slice(0,4).map(s=>`<span class="badge">${escapeHtml(s)}</span>`).join('');
+    const areas = p.areas.slice(0,6).map(a=>`<span class="badge alt">${escapeHtml(a)}</span>`).join('');
+    return `
+      <div class="pCard">
+        <div class="pIcon" aria-hidden="true">${p.icon}</div>
+        <div class="pMeta">
+          <h3>${escapeHtml(rankLabel)} • <strong>${escapeHtml(p.animal)}</strong> <span class="muted">(${letter})</span> — ${pct}%</h3>
+          <p><strong>${escapeHtml(p.slogan)}</strong> — ${escapeHtml(p.summary)}</p>
+
+          <div class="pBadges">
+            <span class="badge ok"><strong>Pontos fortes</strong></span>
+            ${strengths}
+          </div>
+
+          <div class="pBadges">
+            <span class="badge"><strong>Pontos de melhoria</strong></span>
+            ${improvements}
+          </div>
+
+          <div class="pBadges">
+            <span class="badge"><strong>Áreas indicadas</strong></span>
+            ${areas}
+          </div>
+
+          <div class="hint">*Resultado orientativo. Use como autoconhecimento e para direcionamento de área dentro da empresa.</div>
+        </div>
+      </div>
+    `;
+  }
+
+
+
+  function renderQuestions(){
+    elQ.innerHTML = DATA.map(item => {
+      const opts = item.opts.map((o,idx) => {
+        const id = `q${item.n}_${idx}`;
+        const name = `q${item.n}`;
+        return `
+          <label class="opt" for="${id}">
+            <input id="${id}" type="radio" name="${name}" value="${o.k}" />
+            <span class="tag">${o.k}</span>
+            <span class="otxt">${escapeHtml(o.t)}</span>
+          </label>
+        `;
+      }).join('');
+      return `
+        <section class="card" data-q="${item.n}">
+          <div class="qhead">
+            <div class="qtitle">${escapeHtml(item.q)}</div>
+            <div class="qnum">#${item.n}</div>
+          </div>
+          <div class="opts">${opts}</div>
+        </section>
+      `;
+    }).join('');
+
+    // Atualiza progresso ao marcar
+    elQ.addEventListener('change', () => updateProgress());
+    updateProgress();
+  }
+
+  function getAnswers(){
+    const answers = [];
+    for (const item of DATA){
+      const picked = document.querySelector(`input[name="q${item.n}"]:checked`);
+      answers.push(picked ? picked.value : null);
+    }
+    return answers;
+  }
+
+  function updateProgress(){
+    const answers = getAnswers();
+    const done = answers.filter(v => v !== null).length;
+    elProg.textContent = `${done}/25 respondidas`;
+    if (done === 25) {
+      elProg.style.borderColor = 'rgba(34,197,94,.55)';
+      elProg.style.background = 'rgba(34,197,94,.10)';
+      elProg.style.color = 'rgba(220,252,231,.92)';
+      elStatus.innerHTML = `Tudo certo! Agora clique em <strong>Calcular Resultado</strong>.`;
+      if (elBottomStatus) elBottomStatus.innerHTML = `Tudo certo! Agora clique em <strong>Calcular Resultado</strong>.`;
+    } else {
+      elProg.style.borderColor = 'rgba(255,255,255,.12)';
+      elProg.style.background = 'rgba(255,255,255,.05)';
+      elProg.style.color = 'rgba(255,255,255,.72)';
+      elStatus.innerHTML = `Faltam <strong>${25-done}</strong> pergunta(s) para completar.`;
+      if (elBottomStatus) elBottomStatus.innerHTML = `Faltam <strong>${25-done}</strong> pergunta(s) para completar.`;
+    }
+  }
+
+  function clearMissingMarks(){
+    document.querySelectorAll('.card.missingMark').forEach(c=>c.classList.remove('missingMark'));
+  }
+
+  function markMissing(questions){
+    for (const q of questions){
+      document.querySelector(`.card[data-q="${q}"]`)?.classList.add('missingMark');
+    }
+  }
+
+  function calc(){
+    const answers = getAnswers();
+    const missing = [];
+    answers.forEach((v,i) => { if (!v) missing.push(i+1); });
+
+    clearMissingMarks();
+    if (missing.length){
+      markMissing(missing);
+      elMsg.className = 'msg err';
+      elMsg.textContent = `Você ainda não respondeu ${missing.length} pergunta(s): ${missing.join(', ')}. (Cada pergunta deve ter apenas 1 opção marcada.)`;
+      elSum.textContent = 'Soma: 0%';
+    LAST_RESULT = null;
+    if (elBtnPdf) elBtnPdf.disabled = true;
+      elCards.innerHTML = '';
+      elRows.innerHTML = '';
+    elCards.innerHTML = '';
+      document.querySelector(`[data-q="${missing[0]}"]`)?.scrollIntoView({behavior:'smooth', block:'start'});
+      LAST_RESULT = null;
+      if (elBtnPdf) elBtnPdf.disabled = true;
+      return;
+    }
+
+    clearMissingMarks();
+
+    const counts = {I:0, C:0, O:0, A:0};
+    for (const v of answers) counts[v]++;
+
+    const results = Object.entries(counts).map(([k,c]) => {
+      const pct = c * 4; // 25 respostas => cada resposta vale 4%
+      return {k, c, pct};
+    }).sort((a,b) => b.pct - a.pct || b.c - a.c || a.k.localeCompare(b.k));
+
+    const sum = results.reduce((acc,r)=>acc+r.pct,0);
+    elSum.textContent = `Soma: ${sum}%`;
+
+    // Salvar último resultado (para PDF)
+    LAST_RESULT = {
+      name: (elName?.value || '').trim(),
+      counts,
+      results,
+      top1: results[0],
+      top2: results[1],
+      answers
+    };
+
+    // Cards: Perfil predominante + perfil ascendente (2º maior)
+    const top1 = results[0];
+    const top2 = results[1];
+    elCards.className = 'pcards';
+    elCards.innerHTML = `
+      <div class="pgrid">
+        ${renderProfileCard(top1.k, top1.pct, 'Perfil predominante')}
+        ${renderProfileCard(top2.k, top2.pct, 'Perfil ascendente')}
+      </div>
+    `;
+
+    elRows.innerHTML = results.map(r => `
+      <div class="row">
+        <div class="k">${r.k}</div>
+        <div class="bar"><div class="fill" style="width:${r.pct}%"></div></div>
+        <div class="pct">${r.pct}%</div>
+      </div>
+    `).join('') + `
+      <div class="msg ok" style="margin-top:6px;">
+        Contagem: <strong>I</strong> = ${counts.I} ( ${counts.I*4}% ) • 
+        <strong>C</strong> = ${counts.C} ( ${counts.C*4}% ) • 
+        <strong>O</strong> = ${counts.O} ( ${counts.O*4}% ) • 
+        <strong>A</strong> = ${counts.A} ( ${counts.A*4}% )
+        <br/>Validação: ${sum === 100 ? '✅ Soma = 100% (ok)' : '⚠️ Soma ≠ 100% (verifique)'}
+      </div>
+    `;
+
+    if (sum === 100){
+      elMsg.className = 'msg ok';
+      elMsg.textContent = 'Resultado calculado com sucesso. Veja abaixo seu perfil predominante e o perfil ascendente.';
+      if (elBtnPdf) elBtnPdf.disabled = false;
+      document.getElementById('resultsBox').scrollIntoView({behavior:'smooth', block:'start'});
+    } else {
+      elMsg.className = 'msg err';
+      elMsg.textContent = 'Algo deu errado: a soma das porcentagens não fechou em 100%. Verifique se todas as questões foram respondidas corretamente.';
+      LAST_RESULT = null;
+      if (elBtnPdf) elBtnPdf.disabled = true;
+    }
+  }
+
+  function resetAll(){
+    const radios = document.querySelectorAll('input[type="radio"]');
+    radios.forEach(r => r.checked = false);
+    updateProgress();
+    elRows.innerHTML = '';
+    elCards.innerHTML = '';
+    elMsg.className = 'msg';
+    elMsg.textContent = 'Preencha o teste para ver seu resultado aqui.';
+    elSum.textContent = 'Soma: 0%';
+    LAST_RESULT = null;
+    if (elBtnPdf) elBtnPdf.disabled = true;
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  document.getElementById('btnCalc').addEventListener('click', () => {
+    calc();
+  });
+  document.getElementById('btnReset').addEventListener('click', () => resetAll());
+  document.getElementById('btnReset2')?.addEventListener('click', () => resetAll());
+  document.getElementById('btnScrollTop')?.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+  document.getElementById('btnScroll').addEventListener('click', () => {
+    document.getElementById('resultsBox').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  renderQuestions();
+</script>
+</body>
+</html>
